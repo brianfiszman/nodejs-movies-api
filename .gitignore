@@ -1,0 +1,12 @@
+node_modules/
+dist
+dist/**
+app_data/
+app_data/**
+*.log
+*/*.log
+docker-compose.override.yml
+
+# Jest coverage files
+coverage/
+coverage/**

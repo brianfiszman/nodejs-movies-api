@@ -1,0 +1,27 @@
+version: '3.4'
+
+services:
+  mongo:
+    image: mongo:latest
+    container_name: mongo
+    restart: always
+    ports:
+      - 27017:27017
+    environment:
+      - MONGO_INITDB_DATABASE=cinema
+      - MONGO_INITDB_ROOT_USERNAME=root
+      - MONGO_INITDB_ROOT_PASSWORD=123123
+    volumes:
+      - ./app_data/mongodb:/data/db
+    mem_limit: '4G'
+
+  app:
+    build:
+      context: .
+      dockerfile: local.Dockerfile
+    container_name: boilerplate
+    restart: always
+    ports:
+      - '5000:5000'
+    depends_on:
+      - mongo
