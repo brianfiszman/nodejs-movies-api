@@ -1,8 +1,7 @@
-# Nest + Mongoose + TypeScript example integration
+# Nest + Mongoose + TypeScript Movies API
 
 ### Description
-This project provides an API with access to a PostgreSQL.
-It has JWT integration in one of the endpoints.
+This project provides an API with access to a MongoDB that stores movies.
 
 # Available routes:
 
