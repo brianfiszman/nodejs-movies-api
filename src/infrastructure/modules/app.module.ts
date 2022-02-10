@@ -4,6 +4,7 @@ import { configuration, EnvObjects, MongoOptions } from '../config/env.objects';
 import { OrmModule } from '../database/orm';
 import { MovieModule } from '../../domain/modules/movie.module';
 import { validate } from '../config/env.validation';
+import { AuthModule } from './auth.module';
 
 @Module({
   imports: [
@@ -22,6 +23,7 @@ import { validate } from '../config/env.validation';
       },
       inject: [ConfigService],
     }),
+    AuthModule,
     MovieModule,
   ],
   controllers: [],

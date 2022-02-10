@@ -6,6 +6,10 @@ class EnvironmentVariables {
   PORT: string;
 
   @IsNotEmpty()
+  HTTP_BASIC_USER: string;
+  @IsNotEmpty()
+  HTTP_BASIC_PASS: string;
+  @IsNotEmpty()
   MONGO_CLIENT_URL: string;
   @IsNotEmpty()
   MONGO_DB_NAME: string;

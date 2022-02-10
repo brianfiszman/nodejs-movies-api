@@ -2,14 +2,19 @@
 
 ### Description
 This project provides an API with access to a MongoDB that stores movies.
+It uses Basic Auth as authentication through headers with default values included in helm secrets and .env files
 
 # Available routes:
 
 |method|endpoint|description|headers|
 |:-----|:-----|:-----|:-----|
-|GET|/movies|get movies| |
-|POST|/movies|create movie| |
-|PUT|/movies|update movie by title| |
+|GET|/movies|get movies| Authorization: Basic <credentials> |
+|POST|/movies|create movie| Authorization: Basic <credentials> |
+|PUT|/movies|update movie by title| Authorization: Basic <credentials> |
+
+# Postman Collections:
+There are postman collections in the ``postman`` directory which facilitates accessing the endpoints
+These collections include the Basic Auth authentication
 
 # Project Structure
 ```sh

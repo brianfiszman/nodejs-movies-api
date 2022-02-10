@@ -1,4 +1,5 @@
-import { Controller, Get, Post, Body, Put } from '@nestjs/common';
+import { Controller, Get, Post, Body, Put, UseGuards } from '@nestjs/common';
+import { AuthGuard } from '@nestjs/passport';
 import { MovieService } from '../../domain/services/movie.service';
 import { MovieCreateDTO, MovieGetDTO } from '../dtos/movie';
 
@@ -7,6 +8,7 @@ export class MovieController {
   constructor(private movieService: MovieService) {}
 
   @Get()
+  @UseGuards(AuthGuard('basic'))
   async findAll(): Promise<MovieGetDTO[]> {
     const movies = await this.movieService.findAll();
     const dtos: MovieGetDTO[] = movies.map(movie => new MovieGetDTO(movie));
@@ -15,6 +17,7 @@ export class MovieController {
   }
 
   @Post()
+  @UseGuards(AuthGuard('basic'))
   async create(@Body() movieCreateDTO: MovieCreateDTO): Promise<MovieGetDTO> {
     const dto = new MovieCreateDTO(movieCreateDTO);
     const movie = await this.movieService.create(dto);
@@ -22,6 +25,7 @@ export class MovieController {
   }
 
   @Put()
+  @UseGuards(AuthGuard('basic'))
   async update(@Body() movieCreateDTO: MovieCreateDTO): Promise<MovieGetDTO> {
     const dto = new MovieCreateDTO(movieCreateDTO);
     const movie = await this.movieService.update(dto);
